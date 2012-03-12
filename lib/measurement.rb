@@ -10,15 +10,15 @@ module Measurement
       
       args.each do |name|
         before_save do |record|
-          self[name] = self[name].from(options[:model_unit]).to(options[:database_unit]).to_f.round(6) if !self[name].nil? && options[:model_unit] != options[:database_unit]
+          self[name] = self[name].from(options[:model_unit]).to(options[:database_unit]).to_f.round(3) if !self[name].nil? && options[:model_unit] != options[:database_unit]
         end
         
         after_save do |record|
-          self[name] = self[name].from(options[:database_unit]).to(options[:model_unit]).to_f.round(6) if !self[name].nil? && options[:model_unit] != options[:database_unit]
+          self[name] = self[name].from(options[:database_unit]).to(options[:model_unit]).to_f.round(3) if !self[name].nil? && options[:model_unit] != options[:database_unit]
         end
         
         after_initialize do |record|
-          self[name] = self[name].from(options[:database_unit]).to(options[:model_unit]).to_f.round(6) if !self[name].nil? && options[:model_unit] != options[:database_unit]
+          self[name] = self[name].from(options[:database_unit]).to(options[:model_unit]).to_f.round(3) if !self[name].nil? && options[:model_unit] != options[:database_unit]
         end
       end
     end
