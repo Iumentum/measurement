@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.date = "2012-03-12"
   s.description = "Automaticly convert measurements units."
   s.email = "ronni.rasmussen@gmail.com"
-  s.extra_rdoc_files = ["README.doc", "lib/measurement.rb"]
-  s.files = ["Manifest", "README.doc", "Rakefile", "lib/measurement.rb", "measurement.gemspec"]
+  s.extra_rdoc_files = ["README.md", "lib/measurement.rb"]
+  s.files = ["README.md", "Rakefile", "lib/measurement.rb", "measurement.gemspec", "Manifest"]
   s.homepage = "http://github.com/Iumentum/measurement"
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Measurement", "--main", "README.md"]
   s.require_paths = ["lib"]

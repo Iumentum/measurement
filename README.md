@@ -8,7 +8,7 @@ gem 'alchemist'
 
 Install
 -------------
-gem install Iumentum-measurement --source http://gems.github.com
+gem 'measurement', :git => 'https://github.com/Iumentum/measurement.git'
 
 Ussage
 -------------
