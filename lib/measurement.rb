@@ -3,6 +3,13 @@ module Measurement
     base.extend ClassMethods
   end
   
+  def measurement_convert(name, from, to)
+    from  = from.call if from.is_a?(Proc)
+    to    = to.call   if to.is_a?(Proc)
+    
+    self[name] = self[name].from(from).to(to).to_f.round(3) if !self[name].nil? && from != to
+  end
+  
   module ClassMethods
     def measurement(*args, &block)
       options = { :model_unit => :meter, :database_unit => :meter }
@@ -10,15 +17,15 @@ module Measurement
       
       args.each do |name|
         before_save do |record|
-          self[name] = self[name].from(options[:model_unit]).to(options[:database_unit]).to_f.round(3) if !self[name].nil? && options[:model_unit] != options[:database_unit]
+          measurement_convert(name, options[:model_unit], options[:database_unit])
         end
         
         after_save do |record|
-          self[name] = self[name].from(options[:database_unit]).to(options[:model_unit]).to_f.round(3) if !self[name].nil? && options[:model_unit] != options[:database_unit]
+          measurement_convert(name, options[:database_unit], options[:model_unit])
         end
         
         after_initialize do |record|
-          self[name] = self[name].from(options[:database_unit]).to(options[:model_unit]).to_f.round(3) if !self[name].nil? && options[:model_unit] != options[:database_unit]
+          measurement_convert(name, options[:database_unit], options[:model_unit])
         end
       end
     end

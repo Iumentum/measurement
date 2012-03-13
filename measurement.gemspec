@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ronni Steen Rasmussen"]
-  s.date = "2012-03-12"
+  s.date = "2012-03-13"
   s.description = "Automaticly convert measurements units."
   s.email = "ronni.rasmussen@gmail.com"
   s.extra_rdoc_files = ["README.md", "lib/measurement.rb"]
-  s.files = ["README.md", "Rakefile", "lib/measurement.rb", "measurement.gemspec", "Manifest"]
+  s.files = ["README.md", "Rakefile", "lib/measurement.rb", "Manifest", "measurement.gemspec"]
   s.homepage = "http://github.com/Iumentum/measurement"
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Measurement", "--main", "README.md"]
   s.require_paths = ["lib"]
