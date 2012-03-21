@@ -6,8 +6,8 @@ module Measurement
   def measurement_convert(name, from, to)
     from  = from.call if from.is_a?(Proc)
     to    = to.call   if to.is_a?(Proc)
-    
-    self[name] = self[name].from(from).to(to).to_f.round(3) if !self[name].nil? && from != to
+
+    self[name] = self[name].from(from).to(to).to_f.round(3) if from != to
   end
   
   module ClassMethods
@@ -24,7 +24,7 @@ module Measurement
           measurement_convert(name, options[:database_unit], options[:model_unit])
         end
         
-        after_initialize do |record|
+        after_find do |record|
           measurement_convert(name, options[:database_unit], options[:model_unit])
         end
       end
